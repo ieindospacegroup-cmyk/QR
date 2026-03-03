@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Scanner - FULFILLMENT INDOOR 2026</title>
+    <title>QR Scanner - FULFILMENT</title>
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <style>
         * {
@@ -193,7 +193,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📷 QR Scanner - FULFILLMENT INDOOR 2026</h1>
+            <h1>📷 QR Scanner - FULFILMENT</h1>
             <div id="scannerStatus" class="scanner-status info">Memulai scanner...</div>
         </div>
 
@@ -410,23 +410,6 @@
             }
         }
 
-        // Request camera permission
-        function requestCameraPermission() {
-            updateScannerStatus('🔁 Meminta izin kamera...', 'info');
-            
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(() => {
-                    updateScannerStatus('✅ Izin kamera diberikan. Memulai scanner...', 'success');
-                    setTimeout(() => {
-                        startCameraScan();
-                    }, 1000);
-                })
-                .catch((err) => {
-                    console.error('Camera permission error:', err);
-                    updateScannerStatus('❌ Izin kamera ditolak. Periksa browser settings.', 'error');
-                });
-        }
-
         // Handle successful scan
         function onScanSuccess(decodedText) {
             console.log('Scan successful:', decodedText);
@@ -470,20 +453,8 @@
                 }).catch(err => {
                     updateScannerStatus('❌ Gagal menyalin hasil', 'error');
                 });
-            } else {
                 updateScannerStatus('⚠️ Tidak ada hasil untuk disalin', 'warning');
             }
-        }
-
-        // Reset scanner
-        function resetScanner() {
-            lastScanResult = null;
-            document.getElementById('resultSection').style.display = 'none';
-            document.getElementById('manualInput').value = '';
-            updateScannerStatus('🔄 Scanner direset. Siap untuk scan baru.', 'info');
-            setTimeout(() => {
-                startCameraScan();
-            }, 1000);
         }
 
         // Send result back to Dashboard via postMessage or Apps Script GET
@@ -501,7 +472,7 @@
             console.log('Process ID:', processId);
             console.log('Mode:', mode);
             
-            // Get returnUrl from URL parameters
+            // Get returnUrl from URL parameters - DEBUGGING
             const returnUrl = getUrlParameter('returnUrl') || getUrlParameter('return') || 'https://script.google.com/macros/s/AKfycbwHLp6CFcNNSybJle982xGpCV5oXw6nvmd3R8W7Q1o/exec';
             console.log('Return URL:', returnUrl);
             console.log('Return URL type:', typeof returnUrl);
@@ -551,9 +522,9 @@
                 source: 'external_scanner',
                 processId: processId,
                 timestamp: new Date().toISOString(),
-                returnUrl: returnUrl,
-                redirectBack: 'true',
-                scanSuccess: 'true'
+                returnUrl: returnUrl, // Pass returnUrl for redirect back
+                redirectBack: 'true', // Enable redirect back to dashboard
+                scanSuccess: 'true' // Indicate successful scan
             });
             
             const redirectUrl = appsScriptUrl + '?' + params.toString();
@@ -562,7 +533,7 @@
             // Show success message before redirect
             updateScannerStatus('✅ Data diproses. Mengalihkan kembali ke Dashboard...', 'success');
             
-            // IMMEDIATE redirect to Apps Script
+            // IMMEDIATE redirect to Apps Script (no delay)
             window.location.href = redirectUrl;
         }
 
