@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Scanner - FULFILMENT AQUATEAK 2026</title>
+    <title>QR Scanner - FULFILLMENT INDOOR 2026</title>
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <style>
         * {
@@ -193,7 +193,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📷 QR Scanner - FULFILMENT AQUATEAK 2026</h1>
+            <h1>📷 QR Scanner - FULFILLMENT INDOOR 2026</h1>
             <div id="scannerStatus" class="scanner-status info">Memulai scanner...</div>
         </div>
 
@@ -513,7 +513,7 @@
             // Fallback: Send to Apps Script via URL redirect (bypass CORS)
             updateScannerStatus('📤 Mengirim ke Apps Script dan kembali ke Dashboard...', 'info');
             
-            // Use URL redirect to bypass CORS
+            // Use URL redirect to bypass CORS - UPDATE with correct Apps Script URL
             const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbwHLp6CFcNNSybJle982xGpCV5oXw6nvmd3R8W7Q1o/exec';
             
             // Build redirect URL with QR data
