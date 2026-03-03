@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Scanner - FULFILLMENT INDOOR 2026 - Dashboard FULFILLMENT INDOOR 2026</title>
+    <title>QR Scanner - FULFILMENT INDOOR 2026</title>
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <style>
         * {
@@ -193,7 +193,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📷 QR Scanner - FULFILLMENT INDOOR 2026 - Dashboard FULFILLMENT INDOOR 2026</h1>
+            <h1>📷 QR Scanner - FULFILMENT AQUATEAK 2026</h1>
             <div id="scannerStatus" class="scanner-status info">Memulai scanner...</div>
         </div>
 
@@ -472,8 +472,8 @@
             console.log('Process ID:', processId);
             console.log('Mode:', mode);
             
-            // Get returnUrl from URL parameters
-            const returnUrl = getUrlParameter('returnUrl') || getUrlParameter('return');
+            // Get returnUrl from URL parameters - DEBUGGING
+            const returnUrl = getUrlParameter('returnUrl') || getUrlParameter('return') || 'https://script.google.com/macros/s/AKfycbwHLp6CFcNNSybJle982xGpCV5oXw6nvmd3R8W7Q1o/exec';
             console.log('Return URL:', returnUrl);
             console.log('Return URL type:', typeof returnUrl);
             console.log('Return URL length:', returnUrl ? returnUrl.length : 'null');
